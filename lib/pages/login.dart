@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+
+  final VoidCallback showRegisterPage;
+  const Login({super.key, required this.showRegisterPage});
 
   @override
   State<Login> createState() => _LoginState();
@@ -23,6 +25,15 @@ class _LoginState extends State<Login> {
       email: _emailController.text.trim(), 
       password: _passwordController.text.trim()
     );
+  }
+
+  @override
+  void dispose() {
+
+    _emailController.dispose();
+    _passwordController.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -45,7 +56,7 @@ class _LoginState extends State<Login> {
             
                 AnimatedTextKit(animatedTexts: [
                   TyperAnimatedText(
-                    'Hello World',
+                    'Hello Again',
                     textStyle: GoogleFonts.bebasNeue(fontSize: 52),
                     speed: const Duration(milliseconds: 200), 
                     ),
@@ -62,7 +73,7 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: 50),
             
-                //Email TextField
+                // *Email TextField
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -84,7 +95,8 @@ class _LoginState extends State<Login> {
                 ),
             
                 SizedBox(height: 10),
-                //Password TextField
+
+                // *Password TextField
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -107,7 +119,9 @@ class _LoginState extends State<Login> {
                 ),
             
                 SizedBox(height: 10),
-                //SignIn Button
+
+
+                // *SignIn Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
@@ -126,13 +140,18 @@ class _LoginState extends State<Login> {
                 ),
             
                 SizedBox(height: 25),
-                //Not a SignIn Text
-            
+                
+                
+                // *Not a SignIn Text
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Not a Member?'),
-                    Text(' Register Now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.deepPurple),)
+
+                    GestureDetector(
+                      onTap: widget.showRegisterPage,
+                      child: Text(' Register Now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.deepPurple),)
+                    )
                   ],
                 )
               ],
