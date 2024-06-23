@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final _confirmPasswordController = TextEditingController();
 
-  final snackBar = SnackBar(content: Text('Both the Password are Same'));
+  final snackBar = SnackBar(content: Text('Password are not Same'));
 
   Future signup() async {
     if (paswwordConfirmed()) {
