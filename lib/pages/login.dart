@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loginui/pages/forgotPassoword_page.dart';
 
 class Login extends StatefulWidget {
 
@@ -120,6 +121,24 @@ class _LoginState extends State<Login> {
             
                 SizedBox(height: 10),
 
+                //* Forgot Password Button
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassowordPage()));
+                        },
+                        child: Text('Forgot Password', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.deepPurple))
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: 10),
 
                 // *SignIn Button
                 Padding(
