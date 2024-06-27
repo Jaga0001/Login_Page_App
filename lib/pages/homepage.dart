@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:loginui/data/get_user_name.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -12,18 +14,54 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
 
   final user = FirebaseAuth.instance.currentUser!;
+
+
+  List <String> docIds = [];
+
+  Future getDocsIds() async {
+    await FirebaseFirestore.instance.collection('users').get().then(
+      (snapshot) => snapshot.docs.forEach(
+        (document) {
+          print(document.reference);
+          docIds.add(document.reference.id);
+        }
+      )
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Signed In as ' + user.email!,
+        style: TextStyle(fontSize: 15),),
+        actions: [
+          IconButton(onPressed: () {
+            FirebaseAuth.instance.signOut();
+          }, icon: Icon(Icons.logout))
+        ],
+      ),
       body: Center(child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Signed In as ' + user.email!),
-          MaterialButton(onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            color: Colors.deepPurple[200],
-            child: Text('Signed Out'),
+
+          //* Display the Data Using Crud Operations
+
+          Expanded(
+            child: FutureBuilder(
+              future: getDocsIds(), 
+              builder: (context, snapshot) {
+                return ListView.builder(
+                  itemCount: docIds.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: GetUserName(documentId: docIds[index]),
+                    );
+                  },
+                );
+              }
+            )
           )
         ],
       )),
