@@ -1,16 +1,47 @@
-# loginui
+# Login Page
 
-A new Flutter project.
+A simple Login page using Flutter and Firebase Authentication. Firestore is used as the backend to access the database. This project serves as a starting point for Flutter applications and demonstrates integration with Firebase services.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+Before you begin, ensure you have met the following requirements:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK: [Install Flutter](https://docs.flutter.dev/get-started/install)
+- Firebase account: [Create a Firebase account](https://firebase.google.com/)
+- Dart SDK (comes with Flutter)
+- An IDE such as Android Studio or Visual Studio Code
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/Jaga0001/Login_UI.git
+    cd Login_UI
+    ```
+
+2. **Install Flutter dependencies:**
+
+    ```sh
+    flutter pub get
+    ```
+
+3. **Set up Firebase:**
+
+    - Go to the [Firebase Console](https://console.firebase.google.com/).
+    - Create a new project.
+    - Add an Android app and download the `google-services.json` file. Place it in `android/app/`.
+    - Add an iOS app and download the `GoogleService-Info.plist` file. Place it in `ios/Runner/`.
+    - Enable Firebase Authentication and Firestore in the Firebase console.
+
+### Running the App
+
+To run the app, use the following command in the project directory:
+
+```sh
+flutter run
+```
+
+![Frame 1](https://github.com/Jaga0001/Login_UI/assets/144882407/cc5dc140-8d2c-4142-b863-d32ee6955831)
