@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:loginui/data/get_user_name.dart';
 
 class Homepage extends StatefulWidget {
@@ -55,8 +55,13 @@ class _HomepageState extends State<Homepage> {
                 return ListView.builder(
                   itemCount: docIds.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: GetUserName(documentId: docIds[index]),
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        tileColor: Colors.black87,
+                        title: GetUserName(documentId: docIds[index]),
+                      ),
                     );
                   },
                 );

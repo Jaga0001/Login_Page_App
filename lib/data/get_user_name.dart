@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class GetUserName extends StatelessWidget {
 
   final String documentId;
@@ -14,6 +14,7 @@ class GetUserName extends StatelessWidget {
 
   //* Get the Collection
 
+  // ignore: override_on_non_overriding_member
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   Widget build(BuildContext context) {
@@ -22,8 +23,7 @@ class GetUserName extends StatelessWidget {
       builder: ((context, snapshot) {
         if(snapshot.connectionState == ConnectionState.done) {
           Map <String, dynamic> data = snapshot.data!.data() as Map <String, dynamic>;
-
-          return(Text('First Name: ${data['First Name']}'));
+          return(Text('Last Name: ${data['Last Name']}',style: TextStyle(fontWeight: FontWeight.w900, color: Colors.white70),));
         } return Text('Loading');
       }),
     );
