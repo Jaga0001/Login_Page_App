@@ -22,11 +22,23 @@ class _LoginState extends State<Login> {
 
   Future <void> signIn() async {
 
+    //* Circular Progress Indicator
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailController.text.trim(), 
       password: _passwordController.text.trim()
     );
+
+    Navigator.of(context).pop();
   }
+
 
   @override
   void dispose() {
@@ -47,7 +59,7 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.android, size: 100,),
+                Icon(Icons.lock, size: 100,),
                 SizedBox(height: 25),
                 //Hello Again
                 // Text('Hello Again!',
