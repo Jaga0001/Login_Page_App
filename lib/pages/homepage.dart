@@ -58,6 +58,7 @@ class _HomepageState extends State<Homepage> {
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: ListTile(
+                        leading: Icon(Icons.person),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         tileColor: Colors.black87,
                         title: GetUserName(documentId: docIds[index]),
