@@ -1,6 +1,6 @@
 # Login Page
 
-A simple Login page using Flutter and Firebase Authentication. Firestore is used as the backend to access the database. This project serves as a starting point for Flutter applications and demonstrates integration with Firebase services.
+A Simple Login page using Flutter and Firebase Authentication. Firestore is used as the backend to access the database. This project serves as a starting point for Flutter applications and demonstrates integration with Firebase services.
 
 ## Getting Started
 
